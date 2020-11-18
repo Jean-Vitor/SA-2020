@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/Número Um Fixed - Number's Adventure.png"/>
+    <title>Number's Adventure | Registro</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <div class="bg-image dark"></div>
+    <form action="inicio.html">
+        <div class="form-group">
+            <h2>Bem-vindo!</h2>
+        </div>
+        
+        <div class="form-group">
+            <input type="text" id="inputUsername" autocomplete="off" required>
+            <i class="fas fa-user"></i><label for="inputUsername">Username</label>
+        </div>
+
+        <div class="form-group">
+            <input type="password" id="inputPassword" autocomplete="off" required>
+            <i class="fas fa-lock"></i><label for="inputPassword">Senha</label>
+        </div>
+
+        <div class="form-group">
+            <a href="">
+                <button type="submit" id="formButton" class="btn-solid" onclick="formSubmit()">Registrar</button>
+            </a>
+        </div>        
+    </form>
+
+    <script src="scriptsite.js"></script>
+</body>
+</html>
