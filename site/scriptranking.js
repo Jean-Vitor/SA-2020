@@ -1,7 +1,7 @@
 window.onload = function(){
     const players = JSON.parse(sessionStorage.getItem("Player"))
     //Ordenação do array.
-    players.sort((a,b) => a.score - b.score)
+    players.sort((a,b) => b.score - a.score)
     if(players != null){
         let table = document.getElementById("rankingTable")
         
