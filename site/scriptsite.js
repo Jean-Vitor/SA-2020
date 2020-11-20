@@ -59,7 +59,7 @@ function formSubmit(){
     
     
 }
-if (sessionStorage.getItem("Username") != null) {
+if (sessionStorage.getItem("Username") != null && sessionStorage.getItem("Username") != '') {
     navSignin.innerHTML = "<i class='far fa-user'></i>" + sessionStorage.getItem("Username")
     footerSignin.innerHTML = "<i class='far fa-user'></i>" + sessionStorage.getItem("Username")
 }
@@ -71,7 +71,7 @@ else {
 let link = document.getElementById("link")
 let button = document.getElementById("linkButton")
 button.addEventListener("click", function(){
-    if (sessionStorage.getItem("Username") != null) {
+    if (sessionStorage.getItem("Username") != null && sessionStorage.getItem("Username") != '') {
         link.setAttribute("href", "../jogo/jogo.html")
     }
     else {

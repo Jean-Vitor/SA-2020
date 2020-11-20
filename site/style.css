@@ -1527,7 +1527,7 @@ and (max-width: 1366px) {
         font-size: 3.2rem;
     }
     .container-content {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     .grid-left {
         width: 40%;
@@ -1536,5 +1536,58 @@ and (max-width: 1366px) {
         width: 60%;
     }
 
-    
+    #destaque {
+        min-height: 170vh;
+    }
+    .container-card {
+        margin: 0rem 2rem;
+        width: 20vw;
+    }
+    .container-card:nth-child(1) > .card-text {
+        width: 116%;
+    }
+    .card-title {
+        font-size: 1.8rem;
+    }
+    .card-text {
+        font-size: 1.3rem;
+    }
+
+    .footer {
+        max-height: 80vh;
+    }
+    .footer-contact {
+        width: 20%;
+    }
+    .footer-title {
+        width: 100%;
+    }
+
+/*Equipe*/
+    .section-container {
+        height: 100vh;
+    }
+    .lighter-purple {
+        max-height: 65vh;
+    }
+    #section2 {
+        margin: 8rem 8rem 0rem 8rem;
+    }
+    .member {
+        margin: 4rem 0rem;
+        width: 22vw;
+    }
+
+/*Desenvolvimento*/
+    #section3 {
+        margin: 0;
+        margin-top: 8rem;
+        margin-bottom: 0rem;
+    }
+
+/*Sign In*/
+    form {
+        width: 40vw;
+        height: 64vh;
+    }
 }
