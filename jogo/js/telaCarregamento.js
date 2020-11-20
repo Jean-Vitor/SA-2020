@@ -39,6 +39,8 @@ export class TelaCarregamento extends Phaser.Scene {
     this.load.image("ex2", "./assets/Exercício2.png");
     this.load.image("ex3", "./assets/Exercício3.png");
 
+    this.load.audio("musica", "./assets/musica.mp3")
+    
     this.load.tilemapTiledJSON("map", "./assets/mapa.json");
     this.load.tilemapTiledJSON("map2", "./assets/mapa2.json");
     this.load.tilemapTiledJSON("map3", "./assets/mapa3.json");

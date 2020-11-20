@@ -6,6 +6,14 @@ export class CenaJogo2 extends Phaser.Scene {
   preload() {}
 
   create() {
+    var configAudio = {
+      volume: .5,
+      rate: 1,
+      loop: true,
+    }
+    const music = this.sound.add('musica', configAudio)
+    music.play()
+    
     const map = this.make.tilemap({ key: "map2" });
     const tilesetMap = map.addTilesetImage("plataformas", "tiles");
     const coinLayer = map.getObjectLayer("Moeda")["objects"];
