@@ -5,15 +5,14 @@ export class CenaJogo3 extends Phaser.Scene {
 
   preload() {}
 
-  create() {
+  create() {  
     var configAudio = {
       volume: .5,
       rate: 1,
       loop: true,
     }
     const music = this.sound.add('musica', configAudio)
-    music.play()
-    
+    music.play() 
     const map = this.make.tilemap({ key: "map3" });
     const tilesetMap = map.addTilesetImage("plataformas", "tiles");
     const coinLayer = map.getObjectLayer("Moeda")["objects"];
@@ -43,7 +42,7 @@ export class CenaJogo3 extends Phaser.Scene {
 
     //função que é chamada quando o jogador morre.
     const jogadorMorreu = () => {
-      console.log("player morreu");
+      music.stop() 
       this.registry.destroy(); // destrói os registros
       this.events.off(); // desabilita os eventos
       this.scene.start("gameOver");
@@ -110,7 +109,6 @@ export class CenaJogo3 extends Phaser.Scene {
       obj.body.width = object.width;
       obj.body.height = object.height;
       obj.setScale(0.6);
-      console.log("coin Iteration");
     });
 
     //SCORE
@@ -227,7 +225,6 @@ export class CenaJogo3 extends Phaser.Scene {
       //inimigo começa se movendo pra direita
       obj.setVelocityX(100);
       //inicio a gravidade no eixo y dos inimigos
-      console.log("enemy Iteration");
     });
 
     this.physics.add.collider(this.enemy, plataforma);
@@ -250,13 +247,11 @@ export class CenaJogo3 extends Phaser.Scene {
       ) {
         // mata o inimigo quando o jogador está caindo
         // Mata inimigo
-        console.log("matou inimigo");
         inimigo.destroy();
         //faz o player pular ao matar o inimigo
         jogador.body.velocity.y = -150;
 
         //você ganha 5 moedas ao matar o inimigo.
-        console.log(this.coinScoreAtual, typeof this.coinScoreAtual)
         this.coinScoreAtual += 5;
         coinFont.text = `X${this.coinScoreAtual}`;
       } else {
@@ -291,12 +286,10 @@ export class CenaJogo3 extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.porta, () => {
       if (this.estadoPlayer == 3) {
+        music.stop()
         //AJUSTO O RANKING.
         const players = JSON.parse(sessionStorage.getItem("Player"))
-        console.log(players)
         players[players.length - 1].score = this.coinScoreAtual
-
-        
         sessionStorage.setItem("Player", JSON.stringify(players));
         sessionStorage.setItem("coinScore", this.coinScoreAtual);
         sessionStorage.setItem("faseAtual", "fase3");

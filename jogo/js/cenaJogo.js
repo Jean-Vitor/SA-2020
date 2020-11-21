@@ -13,7 +13,6 @@ export class CenaJogo extends Phaser.Scene {
     }
     const music = this.sound.add('musica', configAudio)
     music.play()
-
     const map = this.make.tilemap({ key: "map" });
     const tilesetMap = map.addTilesetImage("plataformas", "tiles");
     const coinLayer = map.getObjectLayer("Moeda")["objects"];
@@ -43,7 +42,7 @@ export class CenaJogo extends Phaser.Scene {
     );
 
     const jogadorMorreu = () => {
-      console.log("player morreu");
+      music.stop()
       this.registry.destroy(); // destrói os registros
       this.events.off(); // desabilita os eventos
       this.scene.start("gameOver");
@@ -110,7 +109,6 @@ export class CenaJogo extends Phaser.Scene {
       obj.body.width = object.width;
       obj.body.height = object.height;
       obj.setScale(0.6);
-      console.log("coin Iteration");
     });
 
     sessionStorage.setItem("coinScore", 0);
@@ -206,7 +204,6 @@ export class CenaJogo extends Phaser.Scene {
       //inimigo começa se movendo pra direita
       obj.setVelocityX(-100);
       //inicio a gravidade no eixo y dos inimigos
-      console.log("enemy Iteration");
     });
 
     this.physics.add.collider(this.enemy, plataforma);
@@ -229,7 +226,6 @@ export class CenaJogo extends Phaser.Scene {
       ) {
         // mata o inimigo quando o jogador está caindo
         // Mata inimigo
-        console.log("matou inimigo");
         inimigo.destroy();
         //faz o player pular ao matar o inimigo
         jogador.body.velocity.y = -250;
@@ -270,6 +266,7 @@ export class CenaJogo extends Phaser.Scene {
 
     this.physics.add.collider(this.player, this.porta, () => {
       if (this.estadoPlayer == 8) {
+        music.stop()
         sessionStorage.setItem("coinScore", this.coinScoreAtual);
         sessionStorage.setItem("faseAtual", "fase2");
         this.scene.start("CenaJogo2");
@@ -277,8 +274,6 @@ export class CenaJogo extends Phaser.Scene {
         jogadorMorreu();
       }
     });
-
-    console.log(cordPergunta);
   }
 
   update() {
@@ -301,8 +296,6 @@ export class CenaJogo extends Phaser.Scene {
       a: "a",
       d: "d",
     });
-    console.log(keys.w.isDown);
-
     if (cursors.left.isDown || keys.a.isDown) {
       jogador.setVelocityX(-160, true).setFlipX(true);
     } else if (cursors.right.isDown || keys.d.isDown) {
